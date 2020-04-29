@@ -21,3 +21,11 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    objects = models.Manager()
+    published = PublishedManager()
+
+
+class PublishedManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(status='published')

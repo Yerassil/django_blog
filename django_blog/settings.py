@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
+from . import creds
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -80,8 +80,10 @@ WSGI_APPLICATION = 'django_blog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': creds.db_name,
+        'USER': creds.db_user,
+        'PASSWORD': creds.db_pass,
     }
 }
 
